@@ -1,4 +1,43 @@
-mat-toolbar {
-  height: 120px;
-  min-height: 80px;
+.toolbar {
+  display: flex;
+  justify-content: space-between; /* Distribui os elementos */
+  align-items: center; /* Centraliza verticalmente */
+  position: relative; /* Permite posicionamento absoluto no centro */
+  height: fit-content; /* Altura padrão */
+  padding: 3vh; /* Espaçamento horizontal */
+}
+
+.toolbar-left,
+.toolbar-right {
+  flex: 0 0 auto; /* Não deixam os elementos crescerem */
+  z-index: 1; /* Garante que os elementos laterais não se sobreponham ao centro */
+  font-size: 1.5vw;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+.toolbar-center {
+  position: absolute; /* Fixa o elemento no centro da barra */
+  left: 50%; /* Move para o centro horizontal */
+  transform: translateX(-50%); /* Centraliza corretamente */
+  z-index: 0; /* Garante que está abaixo dos elementos laterais */
+  margin: 0 0 0 0;
+}
+
+#centralIcon {
+  height: 70px;
+  width: 70px;
+}
+
+@media (max-width: 768px) {
+  .toolbar-left,
+  .toolbar-right {
+    flex: 0 0 auto; /* Não deixam os elementos crescerem */
+    z-index: 1; /* Garante que os elementos laterais não se sobreponham ao centro */
+    font-size: 3vw;
+  }
+  #centralIcon {
+    height: 100px;
+    width: 100px;
+  }
 }
