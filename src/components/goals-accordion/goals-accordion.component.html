@@ -1,0 +1,16 @@
+<div class="accordion-container">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Goals </mat-panel-title>
+        <mat-panel-description> Click to expand </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul>
+        <li *ngFor="let goal of goals">
+          <a href="https://www.google.com">{{ goal.name }}</a>
+          <br />
+        </li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
