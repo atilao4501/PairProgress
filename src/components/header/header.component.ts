@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  name: string = 'SuperBigName';
+  name: string = 'Super Big Name';
   goal: number = 8;
   score: number = 2;
 }

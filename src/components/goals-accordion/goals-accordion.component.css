@@ -1,14 +1,80 @@
+.button-container-container {
+  display: flex;
+  gap: 20px;
+}
+
+#AddButton {
+  width: 7vw; /* Largura baseada na viewport para responsividade */
+  height: 7vw; /* Altura igual à largura, garantindo proporção 1:1 */
+  max-width: 50px; /* Limita a largura máxima */
+  max-height: 50px; /* Limita a altura máxima */
+  aspect-ratio: 1 / 1; /* Garante proporção quadrada */
+
+  display: flex;
+  align-items: center; /* Centraliza o ícone verticalmente */
+  justify-content: center; /* Centraliza o ícone horizontalmente */
+}
+
+.button-container {
+  display: flex; /* Inherited from bootstrap or Angular Material */
+  align-items: center;
+}
+
 .accordion-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Stack accordion vertically */
+  justify-content: center; /* Center accordion content vertically */
+  align-items: center; /* Center accordion horizontally */
   width: auto;
+  height: auto;
+  gap: 12px;
+  position: relative;
+}
+
+/* Optional styles for visual clarity */
+.button-container {
+  height: 50px;
+}
+
+#goals-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: fit-content;
+  gap: 12px;
+}
+#removeButton {
+  width: 4vw; /* Largura baseada na viewport para responsividade */
+  height: 4vw; /* Altura igual à largura, garantindo proporção 1:1 */
+  max-width: 30px; /* Limita a largura máxima */
+  max-height: 30px; /* Limita a altura máxima */
+  aspect-ratio: 1 / 1; /* Garante proporção quadrada */
+
+  display: flex;
+  align-items: center; /* Centraliza o ícone verticalmente */
+  justify-content: center; /* Centraliza o ícone horizontalmente */
+  margin: auto;
+}
+
+ul {
+  list-style-type: none;
+}
+#goals-list {
+  margin: 0;
+  padding: 0;
+}
+#icon-minus {
+  font-size: 120%; /* Tamanho do ícone */
+  display: flex; /* Garante que ele seja flexível */
+  align-items: center; /* Alinha o conteúdo interno do ícone */
+  justify-content: center; /* Alinha horizontalmente */
+}
+a {
+}
+mat-expansion-panel {
+  width: 90%;
   height: auto;
 }
-#bigContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
+.title-description-fonts {
+  font-size: 100%;
 }

@@ -5,6 +5,7 @@
   position: relative; /* Permite posicionamento absoluto no centro */
   height: fit-content; /* Altura padrão */
   padding: 3vh; /* Espaçamento horizontal */
+  width: 100%;
 }
 
 .toolbar-left,
@@ -22,22 +23,17 @@
   transform: translateX(-50%); /* Centraliza corretamente */
   z-index: 0; /* Garante que está abaixo dos elementos laterais */
   margin: 0 0 0 0;
+  height: 100%;
 }
-
 #centralIcon {
-  height: 70px;
-  width: 70px;
+  height: 100%;
+  width: 100%;
 }
-
 @media (max-width: 768px) {
   .toolbar-left,
   .toolbar-right {
     flex: 0 0 auto; /* Não deixam os elementos crescerem */
     z-index: 1; /* Garante que os elementos laterais não se sobreponham ao centro */
     font-size: 3vw;
-  }
-  #centralIcon {
-    height: 100px;
-    width: 100px;
   }
 }

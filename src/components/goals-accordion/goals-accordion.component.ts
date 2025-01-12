@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
 import { Goal } from '../../interfaces/goal';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-goals-accordion',
   standalone: true,
-  imports: [MatExpansionModule, CommonModule],
+  imports: [MatExpansionModule, CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './goals-accordion.component.html',
   styleUrls: ['./goals-accordion.component.css'],
 })

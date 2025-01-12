@@ -1,16 +1,44 @@
-<div class="accordion-container">
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title> Goals </mat-panel-title>
-        <mat-panel-description> Click to expand </mat-panel-description>
-      </mat-expansion-panel-header>
-      <ul>
-        <li *ngFor="let goal of goals">
-          <a href="https://www.google.com">{{ goal.name }}</a>
-          <br />
-        </li>
-      </ul>
-    </mat-expansion-panel>
-  </mat-accordion>
+<div class="button-container-container">
+  <div class="button-container">
+    <button
+      mat-mini-fab
+      enabled
+      aria-label="button to add goals"
+      id="AddButton"
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="accordion-container">
+    <mat-accordion>
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="title-description-fonts">
+            Goals
+          </mat-panel-title>
+          <mat-panel-description style="font-size: smaller">
+            Click to expand
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul id="goals-list">
+          <li *ngFor="let goal of goals">
+            <div id="goals-container">
+              <button
+                mat-mini-fab
+                enabled
+                aria-label="button to add goals"
+                id="removeButton"
+                color="primary"
+              >
+                <mat-icon id="icon-minus">remove</mat-icon>
+              </button>
+              <a href="https://www.google.com">{{ goal.name }}</a>
+            </div>
+            <br />
+          </li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </div>
