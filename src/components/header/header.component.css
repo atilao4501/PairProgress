@@ -5,7 +5,7 @@
   position: relative; /* Permite posicionamento absoluto no centro */
   height: fit-content; /* Altura padrão */
   padding: 3vh; /* Espaçamento horizontal */
-  width: 100%;
+  width: 100vw;
 }
 
 .toolbar-left,

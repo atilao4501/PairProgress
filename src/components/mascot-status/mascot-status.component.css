@@ -1,18 +1,23 @@
 .image-container {
   position: relative; /* Define o container como referência para posicionamento */
-  min-width: 100px; /* Largura do container (opcional) */
-  min-height: 100px; /* Altura do container (opcional) */
-  width: 30vw;
-  height: 30vw;
+  width: 40vw;
+  height: 40vw;
+
+  border: 2px solid black;
+  justify-content: center;
+  align-items: center;
 
   /* border: 12px solid #000; Bordas (opcional) */
 }
 
 .imageOne,
 .imageTwo {
-  position: absolute; /* Permite o posicionamento específico dentro do container */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%; /* Ajusta a largura da imagem (opcional) */
-  height: 100%; /* Mantém a proporção (opcional) */
+  height: 100%;
 }
 
 .imageOne {
@@ -29,4 +34,11 @@
 }
 #normalOpacity {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  /* .image-container {
+    width: 30vw;
+    height: 30vw;
+  } */
 }

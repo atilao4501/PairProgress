@@ -1,0 +1,32 @@
+<table>
+  <!-- Cabeçalho com os meses -->
+  <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let month of months">
+        {{ month }}
+      </th>
+    </tr>
+  </thead>
+
+  <!-- Corpo da tabela com os dados -->
+  <tbody>
+    <!-- Uma linha para cada goalName -->
+    <tr *ngFor="let goal of goalContributions">
+      <!-- Nome da meta na primeira célula -->
+      <td>{{ goal.goalName }}</td>
+
+      <!-- Uma célula para cada mês -->
+      <td *ngFor="let contribution of goal.contributions">
+        <div
+          [ngClass]="{
+            contributed: contribution.contributed,
+            notContributed: !contribution.contributed
+          }"
+        >
+          {{ contribution.contributed ? "✔" : "✘" }}
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

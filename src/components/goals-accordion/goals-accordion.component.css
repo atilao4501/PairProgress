@@ -1,6 +1,7 @@
 .button-container-container {
   display: flex;
   gap: 20px;
+  width: 100%;
 }
 
 #AddButton {
@@ -25,7 +26,7 @@
   flex-direction: column; /* Stack accordion vertically */
   justify-content: center; /* Center accordion content vertically */
   align-items: center; /* Center accordion horizontally */
-  width: auto;
+  width: 100%;
   height: auto;
   gap: 12px;
   position: relative;
@@ -36,7 +37,7 @@
   height: 50px;
 }
 
-#goals-container {
+#goals-itens {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -70,11 +71,19 @@ ul {
   justify-content: center; /* Alinha horizontalmente */
 }
 a {
+  max-width: 100%;
 }
 mat-expansion-panel {
-  width: 90%;
-  height: auto;
+}
+mat-accordion {
+  width: 100%;
 }
 .title-description-fonts {
   font-size: 100%;
+}
+
+@media (max-width: 768px) {
+  mat-panel-description {
+    display: none;
+  }
 }

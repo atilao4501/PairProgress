@@ -18,19 +18,25 @@ export class GoalsAccordionComponent {
       id: 1,
       name: 'Aprender Angular',
       description:
-        'Aprender a usar o Angular para criar aplica es web modernas.',
+        'Aprender a usar o Angular para criar aplicações web modernas.',
+      targetAmount: 1000,
+      currentAmount: 200,
     },
     {
       id: 2,
       name: 'Usar Angular Material',
       description:
-        'Aprender a usar o Angular Material para criar aplica es web com design material.',
+        'Aprender a usar o Angular Material para criar aplicações web com design material.',
+      targetAmount: 500,
+      currentAmount: 150,
     },
     {
       id: 3,
-      name: 'Criar um projeto incr vel',
+      name: 'Criar um projeto incrível',
       description:
-        'Criar um projeto incr vel que demonstre meus conhecimentos em Angular.',
+        'Criar um projeto incrível que demonstre meus conhecimentos em Angular.',
+      targetAmount: 2000,
+      currentAmount: 800,
     },
   ];
 }
