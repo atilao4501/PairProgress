@@ -1,0 +1,8 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <h1>Create your new goal!</h1>
+  <div *ngFor="let field of fields">
+    <label [for]="field.key">{{ field.key }}</label>
+    <input [id]="field.key" [type]="field.type" [formControlName]="field.key" />
+  </div>
+  <button type="submit" [disabled]="!formGroup.valid">Add</button>
+</form>

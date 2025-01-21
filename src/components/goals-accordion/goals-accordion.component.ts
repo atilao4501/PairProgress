@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { Goal } from '../../interfaces/goal';
+import { CreateGoalModalComponent } from '../create-goal-modal/create-goal-modal.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-goals-accordion',
@@ -39,4 +41,13 @@ export class GoalsAccordionComponent {
       currentAmount: 800,
     },
   ];
+
+  constructor(private dialog: MatDialog) {}
+
+  openModal() {
+    this.dialog.open(CreateGoalModalComponent, {
+      width: '400px',
+    });
+    console.log('openModal');
+  }
 }
