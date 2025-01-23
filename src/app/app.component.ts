@@ -8,11 +8,12 @@ import { MonthlyContributionGridComponent } from "../components/monthly-contribu
 import { CreateGoalModalComponent } from "../components/create-goal-modal/create-goal-modal.component";
 import { LoginCardComponent } from "../components/login-card/login-card.component";
 import { LoginComponent } from "../pages/login/login.component";
+import { ResetPasswordFormComponent } from "../components/reset-password-form/reset-password-form.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, GoalsAccordionComponent, MascotStatusComponent, DashboardComponent, MonthlyContributionGridComponent, CreateGoalModalComponent, LoginCardComponent, LoginComponent],
+  imports: [RouterOutlet, HeaderComponent, GoalsAccordionComponent, MascotStatusComponent, DashboardComponent, MonthlyContributionGridComponent, CreateGoalModalComponent, LoginCardComponent, LoginComponent, ResetPasswordFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
