@@ -9,11 +9,13 @@ import { CreateGoalModalComponent } from "../components/create-goal-modal/create
 import { LoginCardComponent } from "../components/login-card/login-card.component";
 import { LoginComponent } from "../pages/login/login.component";
 import { ResetPasswordFormComponent } from "../components/reset-password-form/reset-password-form.component";
+import { LoadingComponent } from "../components/loading/loading.component";
+import { ResetPasswordComponent } from "../pages/reset-password/reset-password.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, GoalsAccordionComponent, MascotStatusComponent, DashboardComponent, MonthlyContributionGridComponent, CreateGoalModalComponent, LoginCardComponent, LoginComponent, ResetPasswordFormComponent],
+  imports: [RouterOutlet, HeaderComponent, GoalsAccordionComponent, MascotStatusComponent, DashboardComponent, MonthlyContributionGridComponent, CreateGoalModalComponent, LoginCardComponent, LoginComponent, ResetPasswordFormComponent, LoadingComponent, ResetPasswordComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
