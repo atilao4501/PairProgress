@@ -1,0 +1,121 @@
+<div class="container">
+  <!-- Mensagem de erro (pop-up) -->
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  <div id="password-container">
+    <div>
+      <h2>Create your user</h2>
+    </div>
+    <form #passwordForm="ngForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          placeholder="Enter your username"
+          [(ngModel)]="username"
+          name="username"
+          required
+          #usernameInput="ngModel"
+          pattern="[a-zA-Z0-9_\-\.\@]{3,32}"
+        />
+        <div
+          *ngIf="usernameInput.invalid && usernameInput.touched"
+          class="text-danger"
+        >
+          <div *ngIf="usernameInput.hasError('required')">
+            Username is required.
+          </div>
+          <div *ngIf="usernameInput.hasError('pattern')">
+            Username must contain only letters, numbers, _, -, or . and must be
+            between 3 and 32 characters.
+          </div>
+        </div>
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="text"
+          class="form-control"
+          placeholder="Enter your email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          #emailInput="ngModel"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        />
+        <div
+          *ngIf="emailInput.invalid && emailInput.touched"
+          class="text-danger"
+        >
+          <div *ngIf="emailInput.hasError('required')">Email is required.</div>
+          <div *ngIf="emailInput.hasError('pattern')">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="text"
+          class="form-control"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          #passwordInput="ngModel"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+        />
+        <label for="passwordConfirmation">Confirm your new password.</label>
+        <input
+          id="passwordConfirmation"
+          type="text"
+          class="form-control"
+          placeholder="Confirm your password"
+          [(ngModel)]="passwordConfirmation"
+          name="passwordConfirmation"
+          required
+          #passwordConfirmationInput="ngModel"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+        />
+        <div
+          *ngIf="
+            (passwordInput.invalid || passwordConfirmationInput.invalid) &&
+            (passwordInput.touched || passwordConfirmationInput.touched)
+          "
+          class="text-danger"
+        >
+          <div *ngIf="passwordInput.hasError('required')">
+            New password is required.
+          </div>
+          <div *ngIf="passwordConfirmationInput.hasError('required')">
+            New password confirmation is required.
+          </div>
+          <div *ngIf="passwordInput.hasError('pattern')">
+            Password must contain at least 8 characters, 1 uppercase letter, 1
+            lowercase letter, 1 number and 1 special character.
+          </div>
+          <div *ngIf="passwordInput.value !== passwordConfirmationInput.value">
+            Password and confirmation do not match.
+          </div>
+        </div>
+      </div>
+      <small>
+        A secure password must contain at least 8 characters, 1 uppercase
+        letter, 1 lowercase letter, 1 number and 1 special character.
+      </small>
+      <div id="button-container">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="passwordForm.invalid"
+        >
+          Confirm
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Loading Spinner -->
+  <app-loading></app-loading>
+</div>

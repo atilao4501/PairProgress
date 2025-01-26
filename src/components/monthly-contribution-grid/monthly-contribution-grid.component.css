@@ -3,6 +3,7 @@ table {
   border-collapse: collapse;
   text-align: center;
   box-sizing: border-box;
+  background-color: #d6e4bb;
 }
 
 th,
@@ -12,7 +13,7 @@ td {
 }
 
 th {
-  background-color: #f0f0f0;
+  background-color: #9fae7f;
   font-weight: bold;
 }
 

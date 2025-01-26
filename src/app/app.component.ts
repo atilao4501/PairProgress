@@ -11,11 +11,12 @@ import { LoginComponent } from "../pages/login/login.component";
 import { ResetPasswordFormComponent } from "../components/reset-password-form/reset-password-form.component";
 import { LoadingComponent } from "../components/loading/loading.component";
 import { ResetPasswordComponent } from "../pages/reset-password/reset-password.component";
+import { CreateUserComponent } from "../pages/create-user/create-user.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, GoalsAccordionComponent, MascotStatusComponent, DashboardComponent, MonthlyContributionGridComponent, CreateGoalModalComponent, LoginCardComponent, LoginComponent, ResetPasswordFormComponent, LoadingComponent, ResetPasswordComponent],
+  imports: [RouterOutlet, HeaderComponent, GoalsAccordionComponent, MascotStatusComponent, DashboardComponent, MonthlyContributionGridComponent, CreateGoalModalComponent, LoginCardComponent, LoginComponent, ResetPasswordFormComponent, LoadingComponent, ResetPasswordComponent, CreateUserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

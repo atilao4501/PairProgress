@@ -9,14 +9,14 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [NgClass, LoadingComponent, FormsModule, CommonModule],
   templateUrl: './reset-password-form.component.html',
-  styleUrls: ['./reset-password-form.component.css'], // Corrigido de "styleUrl" para "styleUrls"
+  styleUrls: ['./reset-password-form.component.css'],
 })
 export class ResetPasswordFormComponent {
-  public exampleEmail = '****le@gmail.com'; // Exemplo de e-mail para exibição
-  public email: string = ''; // Armazena o e-mail inserido pelo usuário
-  public verificationCode: string = ''; // Armazena o código de verificação inserido
-  public newPassword: string = ''; // Armazena a nova senha inserida
-  public errorMessage: string = ''; // Mensagem de erro para exibição no pop-up
+  public exampleEmail = '****le@gmail.com'; // Example email for display
+  public email: string = ''; // Stores the email entered by the user
+  public verificationCode: string = ''; // Stores the verification code entered
+  public newPassword: string = ''; // Stores the new password entered
+  public errorMessage: string = ''; // Error message for display in the pop-up
   public newPasswordConfirmation: string = '';
   public displayContainers = {
     codeContainer: false,
@@ -27,9 +27,9 @@ export class ResetPasswordFormComponent {
   constructor(public loadingService: LoadingService) {}
 
   /**
-   * Envia um código de verificação para o e-mail fornecido.
-   * @param email O e-mail para o qual o código será enviado.
-   * @returns Retorna true após o envio do código.
+   * Sends a verification code to the provided email.
+   * @param email The email to which the code will be sent.
+   * @returns Returns true after sending the code.
    */
   public sendCodeViaEmail(email: string): boolean {
     console.log('Sending code via email: ' + email);
@@ -45,8 +45,8 @@ export class ResetPasswordFormComponent {
   }
 
   /**
-   * Verifica o código de verificação inserido.
-   * @param code O código de verificação a ser validado.
+   * Verifies the verification code entered.
+   * @param code The verification code to be validated.
    */
   public verifyCode(code: string): void {
     console.log('Verifying code: ' + code);
@@ -60,13 +60,13 @@ export class ResetPasswordFormComponent {
   }
 
   /**
-   * Exibe uma mensagem de erro no pop-up.
-   * @param message A mensagem de erro a ser exibida.
+   * Displays an error message in the pop-up.
+   * @param message The error message to be displayed.
    */
   private displayError(message: string): void {
     this.errorMessage = message;
     setTimeout(() => {
-      this.errorMessage = ''; // Limpa a mensagem de erro após 5 segundos
+      this.errorMessage = ''; // Clears the error message after 5 seconds
     }, 5000);
   }
 }

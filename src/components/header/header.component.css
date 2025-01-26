@@ -1,39 +1,23 @@
-.toolbar {
+nav {
+  /* background-color: #c4dd94; */
+  background-color: #48552a;
+  z-index: 1000;
+  padding: 15px;
   display: flex;
-  justify-content: space-between; /* Distribui os elementos */
-  align-items: center; /* Centraliza verticalmente */
-  position: relative; /* Permite posicionamento absoluto no centro */
-  height: fit-content; /* Altura padrão */
-  padding: 3vh; /* Espaçamento horizontal */
-  width: 100vw;
+}
+.dropdown {
+  margin-left: auto;
+  display: flex;
+}
+.dropdown-menu {
+  left: auto;
+  right: 0; /* Faz o menu alinhar à borda direita do dropdown */
 }
 
-.toolbar-left,
-.toolbar-right {
-  flex: 0 0 auto; /* Não deixam os elementos crescerem */
-  z-index: 1; /* Garante que os elementos laterais não se sobreponham ao centro */
-  font-size: 1.5vw;
-  font-weight: bold;
-  font-style: oblique;
+button {
+  background-color: #48552a;
 }
 
-.toolbar-center {
-  position: absolute; /* Fixa o elemento no centro da barra */
-  left: 50%; /* Move para o centro horizontal */
-  transform: translateX(-50%); /* Centraliza corretamente */
-  z-index: 0; /* Garante que está abaixo dos elementos laterais */
-  margin: 0 0 0 0;
-  height: 100%;
-}
-#centralIcon {
-  height: 100%;
-  width: 100%;
-}
-@media (max-width: 768px) {
-  .toolbar-left,
-  .toolbar-right {
-    flex: 0 0 auto; /* Não deixam os elementos crescerem */
-    z-index: 1; /* Garante que os elementos laterais não se sobreponham ao centro */
-    font-size: 3vw;
-  }
+button:hover {
+  background-color: #1c2900;
 }

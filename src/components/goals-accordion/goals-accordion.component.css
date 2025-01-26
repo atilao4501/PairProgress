@@ -1,3 +1,8 @@
+button {
+  background-color: #48552a;
+  color: white;
+}
+
 .button-container-container {
   display: flex;
   gap: 20px;
@@ -74,6 +79,7 @@ a {
   max-width: 100%;
 }
 mat-expansion-panel {
+  background-color: #d6e4bb;
 }
 mat-accordion {
   width: 100%;
