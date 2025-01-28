@@ -2,9 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #7f9853;
 }
 html,
 body {
   height: 100%;
+  background-color: #7f9853;
 }
-

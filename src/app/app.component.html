@@ -1,4 +1,11 @@
-<!-- <app-dashboard></app-dashboard> -->
-<!-- <app-login></app-login> -->
-<!-- <app-reset-password></app-reset-password> -->
-<app-create-user></app-create-user>
+<!-- <app-dashboard-page></app-dashboard-page> -->
+<!-- <app-login-page></app-login-page> -->
+<!-- <app-reset-password-page></app-reset-password-page> -->
+<!-- <app-create-user-page></app-create-user> -->
+<!-- <app-goal-detailed-page></app-goal-detailed-page> -->
+<app-confirm-action-dialog
+  [title]="'Delete Item'"
+  [message]="'Are you sure you want to delete this item?'"
+  [onConfirm]="test"
+  [onCancel]="test"
+></app-confirm-action-dialog>

@@ -5,7 +5,7 @@ import { LoginCardComponent } from '../../components/login-card/login-card.compo
   selector: 'app-login',
   standalone: true,
   imports: [LoginCardComponent],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: './login-page.component.html',
+  styleUrl: './login-page.component.css',
 })
-export class LoginComponent {}
+export class LoginPageComponent {}

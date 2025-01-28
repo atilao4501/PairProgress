@@ -4,6 +4,11 @@ nav {
   z-index: 1000;
   padding: 15px;
   display: flex;
+  border-radius: 10px; /* Adiciona bordas redondas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona sombra */
+  width: 98vw;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .dropdown {
   margin-left: auto;
@@ -20,4 +25,10 @@ button {
 
 button:hover {
   background-color: #1c2900;
+}
+
+@media (max-width: 768px) {
+  nav {
+    width: 95vw;
+  }
 }

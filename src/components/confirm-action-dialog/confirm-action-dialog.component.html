@@ -1,0 +1,26 @@
+<div
+  class="modal"
+  [class.show]="confirmActionService.displayConfirmAction"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-backdrop"></div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="confirm-action-dialog">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="confirm()">
+          Accept
+        </button>
+        <button type="button" class="btn btn-dark" (click)="cancel()">
+          Deny
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
