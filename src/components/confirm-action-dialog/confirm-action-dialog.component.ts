@@ -13,16 +13,13 @@ export class ConfirmActionDialogComponent {
 
   @Input() public title: string = '';
   @Input() public message: string = '';
-  @Input() public onConfirm?: () => void; // Optional function
-  @Input() public onCancel?: () => void; // Optional function
 
   public confirm(): void {
-    this.onConfirm?.(); // Safe call
+    this.confirmActionService.onConfirm?.();
   }
 
   public cancel(): void {
-    console.log('Cancel');
+    this.confirmActionService.onCancel?.();
     this.confirmActionService.hide();
-    this.onCancel?.(); // Safe call
   }
 }

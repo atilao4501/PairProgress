@@ -14,6 +14,8 @@ import { ResetPasswordPageComponent } from '../pages/reset-password/reset-passwo
 import { CreateUserPageComponent } from '../pages/create-user/create-user-page.component';
 import { GoalDetailedPageComponent } from '../pages/goal-detailed-page/goal-detailed-page.component';
 import { ConfirmActionDialogComponent } from '../components/confirm-action-dialog/confirm-action-dialog.component';
+import { MyProfilePageComponent } from "../pages/my-profile-page/my-profile-page.component";
+import { DetailedProfileComponent } from "../components/detailed-profile/detailed-profile.component";
 
 @Component({
   selector: 'app-root',
@@ -34,7 +36,9 @@ import { ConfirmActionDialogComponent } from '../components/confirm-action-dialo
     CreateUserPageComponent,
     GoalDetailedPageComponent,
     ConfirmActionDialogComponent,
-  ],
+    MyProfilePageComponent,
+    DetailedProfileComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
