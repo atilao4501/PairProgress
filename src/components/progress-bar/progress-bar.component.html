@@ -1,0 +1,13 @@
+<div class="progress">
+  <div
+    class="progress-bar"
+    role="progressbar"
+    [style.width.%]="progressValue"
+    [attr.aria-valuenow]="progressValue"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    [style.backgroundColor]="getColor()"
+  >
+    {{ progressValue | number : "1.0-0" }}%
+  </div>
+</div>

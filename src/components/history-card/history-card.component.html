@@ -1,0 +1,18 @@
+<div id="history-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Contributor Name</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contribution of historyOfContributions.contributions">
+        <td>{{ contribution.contributorName }}</td>
+        <td>{{ contribution.amount }}</td>
+        <td>{{ contribution.date | date : "dd/MM/yyyy" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -11,9 +11,6 @@ import { ConfirmActionService } from '../../services/confirmAction.service';
 export class ConfirmActionDialogComponent {
   constructor(public confirmActionService: ConfirmActionService) {}
 
-  @Input() public title: string = '';
-  @Input() public message: string = '';
-
   public confirm(): void {
     this.confirmActionService.onConfirm?.();
   }

@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ConfirmActionService {
   public displayConfirmAction = false;
+  public title = '';
+  public message = '';
 
   public onConfirm?: () => any = () => {
     console.log('Confirm not implemented');
@@ -19,9 +21,13 @@ export class ConfirmActionService {
   }
 
   public show(
+    newTitle: string,
+    newMessage: string,
     onConfirmCallback: () => any,
     onCancelCallback: () => any = () => {}
   ): void {
+    this.title = newTitle;
+    this.message = newMessage;
     this.displayConfirmAction = true;
     this.onConfirm = onConfirmCallback;
     this.onCancel = onCancelCallback;

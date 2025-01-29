@@ -16,6 +16,10 @@ import { GoalDetailedPageComponent } from '../pages/goal-detailed-page/goal-deta
 import { ConfirmActionDialogComponent } from '../components/confirm-action-dialog/confirm-action-dialog.component';
 import { MyProfilePageComponent } from "../pages/my-profile-page/my-profile-page.component";
 import { DetailedProfileComponent } from "../components/detailed-profile/detailed-profile.component";
+import { ProgressBarComponent } from "../components/progress-bar/progress-bar.component";
+import { GoalDetailedCardComponent } from "../components/goal-detailed-card/goal-detailed-card.component";
+import { HistoryCardComponent } from "../components/history-card/history-card.component";
+import { NewContributionCardComponent } from "../components/new-contribution-card/new-contribution-card.component";
 
 @Component({
   selector: 'app-root',
@@ -37,7 +41,11 @@ import { DetailedProfileComponent } from "../components/detailed-profile/detaile
     GoalDetailedPageComponent,
     ConfirmActionDialogComponent,
     MyProfilePageComponent,
-    DetailedProfileComponent
+    DetailedProfileComponent,
+    ProgressBarComponent,
+    GoalDetailedCardComponent,
+    HistoryCardComponent,
+    NewContributionCardComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

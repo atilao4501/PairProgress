@@ -23,6 +23,8 @@ export class GoalsAccordionComponent {
         'Aprender a usar o Angular para criar aplicações web modernas.',
       targetAmount: 1000,
       currentAmount: 200,
+      date: new Date('2023-01-01'),
+      recommendedInvestmentPerMonth: 100,
     },
     {
       id: 2,
@@ -31,6 +33,8 @@ export class GoalsAccordionComponent {
         'Aprender a usar o Angular Material para criar aplicações web com design material.',
       targetAmount: 500,
       currentAmount: 150,
+      date: new Date('2023-02-01'),
+      recommendedInvestmentPerMonth: 50,
     },
     {
       id: 3,
@@ -39,6 +43,8 @@ export class GoalsAccordionComponent {
         'Criar um projeto incrível que demonstre meus conhecimentos em Angular.',
       targetAmount: 2000,
       currentAmount: 800,
+      date: new Date('2023-03-01'),
+      recommendedInvestmentPerMonth: 200,
     },
   ];
 

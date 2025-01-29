@@ -2,7 +2,7 @@ export interface NewGoal {
   name: string;
   description: string;
   targetAmount: number;
-  initialAmount?: number;
+  currentAmount?: number;
   finalDate: Date;
   recommendedInvestmentPerMonth: number;
 }

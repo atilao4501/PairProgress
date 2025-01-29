@@ -21,7 +21,7 @@ export class CreateGoalModalComponent implements OnInit {
       name: '',
       description: '',
       targetAmount: 0,
-      initialAmount: 0,
+      currentAmount: 0,
       finalDate: new Date(),
       recommendedInvestmentPerMonth: 0,
     };

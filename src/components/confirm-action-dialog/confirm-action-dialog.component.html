@@ -8,10 +8,10 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="confirm-action-dialog">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">{{ confirmActionService.title }}</h5>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <p>{{ confirmActionService.message }}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" (click)="confirm()">

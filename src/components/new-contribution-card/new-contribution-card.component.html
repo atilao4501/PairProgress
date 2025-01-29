@@ -1,0 +1,30 @@
+<div id="container" class="container">
+  <h2>New Contribution</h2>
+  <form
+    #contributionForm="ngForm"
+    class="needs-validation"
+    (ngSubmit)="submitContribution()"
+  >
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount:</label>
+      <input
+        type="number"
+        id="amount"
+        name="amount"
+        [(ngModel)]="amount"
+        required
+        class="form-control"
+      />
+      <div class="invalid-feedback">Please enter an amount.</div>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="btn btn-dark"
+        [disabled]="!contributionForm.form.valid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
