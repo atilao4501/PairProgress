@@ -1,7 +1,18 @@
-app-login-card {
+#page {
   display: flex;
-  justify-content: center;
+  background-color: #48552a;
+  width: 100%;
+  min-height: 100%;
+  height: fit-content;
   align-items: center;
-  height: 100vh;
-  background-color: #7f9853;
+  justify-content: center;
+}
+app-login-card {
+  width: 500px;
+}
+
+@media (max-width: 600px) {
+  app-login-card {
+    width: 300px;
+  }
 }

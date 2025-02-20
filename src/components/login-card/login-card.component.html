@@ -1,13 +1,15 @@
 <div class="container">
-  <form>
+  <form (ngSubmit)="login(usernameInput.value, passwordInput.value)">
     <div class="form-group">
       <label for="usernameInput">Username</label>
       <input
         type="text"
         class="form-control"
-        aria-describedby="emailHelp"
-        placeholder="Enter Username"
         id="usernameInput"
+        #usernameInput
+        name="username"
+        placeholder="Enter username"
+        required
       />
     </div>
     <div class="form-group" id="password-container">
@@ -16,14 +18,18 @@
         <input
           type="password"
           class="form-control"
-          placeholder="Password"
           id="passwordInput"
+          #passwordInput
+          name="password"
+          placeholder="Enter password"
+          required
         />
       </div>
       <a href="">Forgot your password?</a>
     </div>
     <div id="button-container">
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-dark">Login</button>
     </div>
   </form>
 </div>
+<app-loading></app-loading>

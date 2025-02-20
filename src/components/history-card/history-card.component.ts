@@ -20,6 +20,7 @@ export class HistoryCardComponent {
 
   public historyOfContributions: HistoryOfContributionsPerGoal = {
     goalId: 1,
+    goalName: 'teste',
     contributions: [this.exampleContribution],
   };
 }

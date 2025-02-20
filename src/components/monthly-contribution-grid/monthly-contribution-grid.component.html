@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th></th>
-      <th *ngFor="let month of months">
+      <th *ngFor="let month of monthsKeys">
         {{ month }}
       </th>
     </tr>
@@ -11,20 +11,23 @@
 
   <!-- Table body with data -->
   <tbody>
-    <!-- One row for each goalName -->
-    <tr *ngFor="let goal of goalContributions">
-      <!-- Goal name in the first cell -->
+    <!-- One row for each goal -->
+    <tr *ngFor="let goal of historyOfContributionsPerGoal">
+      <!-- Goal ID in the first cell -->
       <td>{{ goal.goalName }}</td>
-
       <!-- One cell for each month -->
-      <td *ngFor="let contribution of goal.contributions">
+      <td *ngFor="let month of monthsKeys">
         <div
-          [ngClass]="{
-            contributed: contribution.contributed,
-            notContributed: !contribution.contributed
-          }"
+          *ngIf="getContributionForMonth(goal.contributions, month)"
+          class="contributed"
         >
-          {{ contribution.contributed ? "✔" : "✘" }}
+          ✔
+        </div>
+        <div
+          *ngIf="!getContributionForMonth(goal.contributions, month)"
+          class="notContributed"
+        >
+          ✘
         </div>
       </td>
     </tr>

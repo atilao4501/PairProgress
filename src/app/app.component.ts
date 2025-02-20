@@ -45,7 +45,9 @@ import { NewContributionCardComponent } from "../components/new-contribution-car
     ProgressBarComponent,
     GoalDetailedCardComponent,
     HistoryCardComponent,
-    NewContributionCardComponent
+    NewContributionCardComponent,
+    LoginPageComponent,
+    ResetPasswordPageComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

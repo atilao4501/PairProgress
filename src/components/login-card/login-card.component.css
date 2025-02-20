@@ -2,7 +2,7 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   padding: 20px;
-  width: 300px;
+  width: 100%;
   background-color: #cadaa9;
 }
 #button-container {
@@ -11,6 +11,7 @@
 }
 button {
   background-color: #48552a;
+  border: none;
 }
 #password-container {
   display: flex;

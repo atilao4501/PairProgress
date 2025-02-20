@@ -4,7 +4,7 @@ import { ResetPasswordFormComponent } from '../../components/reset-password-form
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-reset-password',
+  selector: 'app-reset-password-page',
   standalone: true,
   imports: [LoadingComponent, ResetPasswordFormComponent, NgClass],
   templateUrl: './reset-password-page.component.html',
