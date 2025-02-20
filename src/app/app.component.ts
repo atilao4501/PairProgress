@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { GoalsAccordionComponent } from '../components/goals-accordion/goals-accordion.component';
 import { MascotStatusComponent } from '../components/mascot-status/mascot-status.component';
@@ -14,41 +14,17 @@ import { ResetPasswordPageComponent } from '../pages/reset-password/reset-passwo
 import { CreateUserPageComponent } from '../pages/create-user/create-user-page.component';
 import { GoalDetailedPageComponent } from '../pages/goal-detailed-page/goal-detailed-page.component';
 import { ConfirmActionDialogComponent } from '../components/confirm-action-dialog/confirm-action-dialog.component';
-import { MyProfilePageComponent } from "../pages/my-profile-page/my-profile-page.component";
-import { DetailedProfileComponent } from "../components/detailed-profile/detailed-profile.component";
-import { ProgressBarComponent } from "../components/progress-bar/progress-bar.component";
-import { GoalDetailedCardComponent } from "../components/goal-detailed-card/goal-detailed-card.component";
-import { HistoryCardComponent } from "../components/history-card/history-card.component";
-import { NewContributionCardComponent } from "../components/new-contribution-card/new-contribution-card.component";
+import { MyProfilePageComponent } from '../pages/my-profile-page/my-profile-page.component';
+import { DetailedProfileComponent } from '../components/detailed-profile/detailed-profile.component';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar.component';
+import { GoalDetailedCardComponent } from '../components/goal-detailed-card/goal-detailed-card.component';
+import { HistoryCardComponent } from '../components/history-card/history-card.component';
+import { NewContributionCardComponent } from '../components/new-contribution-card/new-contribution-card.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    GoalsAccordionComponent,
-    MascotStatusComponent,
-    DashboardPageComponent,
-    MonthlyContributionGridComponent,
-    CreateGoalModalComponent,
-    LoginCardComponent,
-    LoginCardComponent,
-    ResetPasswordFormComponent,
-    LoadingComponent,
-    ResetPasswordFormComponent,
-    CreateUserPageComponent,
-    GoalDetailedPageComponent,
-    ConfirmActionDialogComponent,
-    MyProfilePageComponent,
-    DetailedProfileComponent,
-    ProgressBarComponent,
-    GoalDetailedCardComponent,
-    HistoryCardComponent,
-    NewContributionCardComponent,
-    LoginPageComponent,
-    ResetPasswordPageComponent
-],
+  imports: [[RouterModule]],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

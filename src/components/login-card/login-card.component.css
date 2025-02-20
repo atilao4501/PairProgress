@@ -16,5 +16,22 @@ button {
 #password-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+}
+.errorMessage {
+  margin-top: 10px;
+}
+
+.password-toggle {
+  position: absolute;
+  z-index: 130;
+  display: flex;
+
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form-group {
+  margin-top: 10px;
+  gap: 5px;
 }
