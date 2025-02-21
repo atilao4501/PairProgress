@@ -6,6 +6,10 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit, NgZone } from '@angular/core';
+import { ApiService } from '../../app/services/api.service';
+import { LoadingService } from '../../services/loading.service';
+import { ApiResponse } from '../../interfaces/apiResponse';
+import { BuddyMoodEnum } from '../../interfaces/buddyMoodEnum';
 
 @Component({
   selector: 'app-mascot-status',
@@ -22,23 +26,56 @@ import { Component, OnInit, NgZone } from '@angular/core';
   ],
 })
 export class MascotStatusComponent implements OnInit {
-  public imageName = 'angryMascot';
+  public imageName = 'neutralMascot';
   public firstImageState = 'visible';
   public secondImageState = 'hidden';
   public firstImageId = 'noOpacity';
   public secondImageId = 'normalOpacity';
   public number = 0;
+  private mood: BuddyMoodEnum = 0;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(
+    private ngZone: NgZone,
+    private apiService: ApiService,
+    private loadingService: LoadingService
+  ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    try {
+      this.loadingService.show();
+      let actualBuddyMood = await this.apiService.get<BuddyMoodEnum>(
+        'Buddy/GetBuddyMood'
+      );
+      this.getBuddyImageByMood(actualBuddyMood.data);
+      console.log('Mood retrieved successfully' + actualBuddyMood.data);
+      this.loadingService.hide();
+    } catch (error: any) {
+      let apiError = error.error as ApiResponse<string>;
+      console.error(apiError.message);
+      this.loadingService.hide();
+    }
+
     this.ngZone.runOutsideAngular(() => {
       setInterval(() => {
         this.ngZone.run(() => {
           this.changeOpacity();
         });
-      }, 2000);
+      }, 1000);
     });
+  }
+
+  getBuddyImageByMood(buddyMood: BuddyMoodEnum): void {
+    switch (buddyMood) {
+      case BuddyMoodEnum.Happy:
+        this.imageName = 'happyMascot';
+        break;
+      case BuddyMoodEnum.Normal:
+        this.imageName = 'neutralMascot';
+        break;
+      case BuddyMoodEnum.Angry:
+        this.imageName = 'angryMascot';
+        break;
+    }
   }
 
   toggleImageStates() {

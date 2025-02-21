@@ -4,5 +4,8 @@
     <label [for]="field.key">{{ field.key }}</label>
     <input [id]="field.key" [type]="field.type" [formControlName]="field.key" />
   </div>
-  <button type="submit" [disabled]="!formGroup.valid">Add</button>
+  <button type="submit" class="btn btn-dark" [disabled]="!formGroup.valid">
+    Add
+  </button>
+  <app-loading></app-loading>
 </form>

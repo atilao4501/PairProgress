@@ -3,6 +3,6 @@ export interface NewGoal {
   description: string;
   targetAmount: number;
   currentAmount?: number;
-  finalDate: Date;
+  date: Date;
   recommendedInvestmentPerMonth: number;
 }

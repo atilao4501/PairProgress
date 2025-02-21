@@ -28,9 +28,10 @@
               <button
                 mat-mini-fab
                 enabled
-                aria-label="button to add goals"
+                aria-label="button to remove goals"
                 id="removeButton"
                 color="primary"
+                (click)="deleteGoal(goal.id)"
               >
                 <mat-icon id="icon-minus">remove</mat-icon>
               </button>

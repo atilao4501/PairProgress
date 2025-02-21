@@ -42,7 +42,6 @@ export class LoginCardComponent {
     }
 
     try {
-      this.loadingService.show();
       this.errorMessage = '';
 
       let loginRequest: LoginRequest = {
@@ -54,7 +53,6 @@ export class LoginCardComponent {
       const response = await this.apiService.login(loginRequest);
       console.log('Success: ' + response);
       localStorage.setItem('token', response.data.token);
-      this.loadingService.hide();
 
       this.router.navigate(['/home']);
     } catch (error: any) {

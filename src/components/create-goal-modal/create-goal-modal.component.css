@@ -17,4 +17,5 @@ h1 {
 
 form {
   padding: 16px;
+  z-index: 30;
 }
