@@ -6,7 +6,7 @@
       aria-label="button to add goals"
       id="AddButton"
       color="#48552a"
-      (click)="openModal()"
+      (click)="goalService.openCreateGoalModal()"
     >
       <mat-icon>add</mat-icon>
     </button>
@@ -23,7 +23,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ul id="goals-list">
-          <li *ngFor="let goal of goals">
+          <li *ngFor="let goal of goalService.goals">
             <div id="goals-itens">
               <button
                 mat-mini-fab
@@ -31,11 +31,11 @@
                 aria-label="button to remove goals"
                 id="removeButton"
                 color="primary"
-                (click)="deleteGoal(goal.id)"
+                (click)="goalService.deleteGoal(goal.id)"
               >
                 <mat-icon id="icon-minus">remove</mat-icon>
               </button>
-              <a href="https://www.google.com">{{ goal.name }}</a>
+              <a [routerLink]="['/goal', goal.id]">{{ goal.name }}</a>
             </div>
             <br />
           </li>

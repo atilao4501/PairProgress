@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginRequest, LoginResponse } from '../../interfaces/loginModel';
 import { ApiResponse } from '../../interfaces/apiResponse';
-import { firstValueFrom, map, Observable } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,8 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    @Inject(PLATFORM_ID) private platformId: any // Injeção do PLATFORM_ID para verificar SSR
   ) {}
 
   async login(credentials: LoginRequest): Promise<ApiResponse<LoginResponse>> {
@@ -35,13 +37,18 @@ export class ApiService {
     };
   }
 
-  private getAuthHeaders() {
-    const token = localStorage.getItem('token');
-    return {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+  private getAuthHeaders(): { headers: HttpHeaders } {
+    let headers = new HttpHeaders();
+
+    if (isPlatformBrowser(this.platformId)) {
+      // ✅ Garante que só acessa localStorage no navegador
+      const token = localStorage.getItem('token');
+      if (token) {
+        headers = headers.set('Authorization', `Bearer ${token}`);
+      }
+    }
+
+    return { headers };
   }
 
   async get<T>(endpoint: string): Promise<ApiResponse<T>> {

@@ -1,11 +1,51 @@
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <h1>Create your new goal!</h1>
+<form
+  [formGroup]="formGroup"
+  (ngSubmit)="goalService.createGoal(formGroup.value)"
+>
   <div *ngFor="let field of fields">
     <label [for]="field.key">{{ field.key }}</label>
-    <input [id]="field.key" [type]="field.type" [formControlName]="field.key" />
+    <input
+      [id]="field.key"
+      [type]="field.type"
+      [formControlName]="field.key"
+      required="true"
+    />
   </div>
-  <button type="submit" class="btn btn-dark" [disabled]="!formGroup.valid">
-    Add
-  </button>
+
+  <div
+    *ngIf="formGroup.invalid && formGroup.touched"
+    class="alert alert-danger"
+    role="alert"
+  >
+    Please fill in all fields correctly.
+  </div>
+
+  <div
+    *ngIf="goalService.createGoalModalErrorMessage"
+    class="alert alert-warning"
+    role="alert"
+  >
+    {{ goalService.createGoalModalErrorMessage }}
+  </div>
+
+  <div class="button-group">
+    <button
+      type="submit"
+      id="cancelButton"
+      class="btn btn-dark"
+      [disabled]="!formGroup.valid"
+    >
+      Add
+    </button>
+    <button
+      type="button"
+      id="cancelButton"
+      class="btn btn-secondary"
+      (click)="goalService.closeCreateGoalModal()"
+    >
+      Cancel
+    </button>
+  </div>
+
   <app-loading></app-loading>
 </form>

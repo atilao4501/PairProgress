@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Contribution } from '../../interfaces/contribution';
 import { HistoryOfContributionsPerGoal } from '../../interfaces/historyOfContributionsPerGoal';
 import { CommonModule } from '@angular/common';
+import { ContributionService } from '../../app/services/contribution.service';
+import { GoalService } from '../../app/services/goal.service';
+import { Goal } from '../../interfaces/goal';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-history-card',
@@ -10,17 +14,22 @@ import { CommonModule } from '@angular/common';
   templateUrl: './history-card.component.html',
   styleUrl: './history-card.component.css',
 })
-export class HistoryCardComponent {
-  public exampleContribution: Contribution = {
-    goalId: 1,
-    amount: 100,
-    date: new Date(),
-    contributorName: 'John Doe',
-  };
+export class HistoryCardComponent implements OnInit {
+  constructor(
+    private contributionService: ContributionService,
+    public goalService: GoalService,
+    private loadingService: LoadingService
+  ) {}
+  ngOnInit() {}
 
-  public historyOfContributions: HistoryOfContributionsPerGoal = {
-    goalId: 1,
-    goalName: 'teste',
-    contributions: [this.exampleContribution],
-  };
+  async deleteContribution(contributionId: number) {
+    try {
+      this.loadingService.show();
+      await this.contributionService.deleteContributionById(contributionId);
+      await this.goalService.getDetailedGoalById(
+        this.goalService.detailedGoal.id
+      );
+      this.loadingService.hide();
+    } catch (error) {}
+  }
 }

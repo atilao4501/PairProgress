@@ -21,11 +21,11 @@ app-goal-detailed-card {
 }
 app-history-card {
   flex: 1;
-  max-width: 50%;
+  max-width: 70%;
 }
 app-new-contribution-card {
   flex: 1;
-  max-width: 50%;
+  max-width: 30%;
 }
 
 @media (max-width: 768px) {

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ConfirmActionService } from '../../services/confirmAction.service';
 import { ConfirmActionDialogComponent } from '../confirm-action-dialog/confirm-action-dialog.component';
+import { User } from '../../interfaces/user/user';
 
 @Component({
   selector: 'app-detailed-profile',
@@ -19,6 +20,7 @@ export class DetailedProfileComponent {
   public email: string = 'email@gmail.com';
   public partnerName: string = 'Cleyton rasta';
   public newPartnerCode: number = 0;
+  public user: User = JSON.parse(localStorage.getItem('user') || '{}');
 
   public addPartner() {
     console.log('add partner ' + this.newPartnerCode);

@@ -7,7 +7,10 @@
     <div>
       <h2>Create your user</h2>
     </div>
-    <form #passwordForm="ngForm">
+    <form
+      #createUserForm="ngForm"
+      (ngSubmit)="createUser(createUserForm.value)"
+    >
       <div class="form-group">
         <label for="username">Username</label>
         <input
@@ -33,6 +36,7 @@
             between 3 and 32 characters.
           </div>
         </div>
+
         <label for="email">Email</label>
         <input
           id="email"
@@ -54,30 +58,57 @@
             Please enter a valid email address.
           </div>
         </div>
+
         <label for="password">Password</label>
-        <input
-          id="password"
-          type="text"
-          class="form-control"
-          placeholder="Enter your password"
-          [(ngModel)]="password"
-          name="password"
-          required
-          #passwordInput="ngModel"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
-        />
+        <div class="input-group">
+          <input
+            id="password"
+            [type]="passwordVisible ? 'text' : 'password'"
+            class="form-control"
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            name="password"
+            required
+            #passwordInput="ngModel"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+          />
+          <div class="input-group-append">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="passwordVisible = !passwordVisible"
+            >
+              {{ passwordVisible ? "Hide" : "Show" }}
+            </button>
+          </div>
+        </div>
+
         <label for="passwordConfirmation">Confirm your new password.</label>
-        <input
-          id="passwordConfirmation"
-          type="text"
-          class="form-control"
-          placeholder="Confirm your password"
-          [(ngModel)]="passwordConfirmation"
-          name="passwordConfirmation"
-          required
-          #passwordConfirmationInput="ngModel"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
-        />
+        <div class="input-group">
+          <input
+            id="passwordConfirmation"
+            [type]="passwordConfirmationVisible ? 'text' : 'password'"
+            class="form-control"
+            placeholder="Confirm your password"
+            [(ngModel)]="passwordConfirmation"
+            name="passwordConfirmation"
+            required
+            #passwordConfirmationInput="ngModel"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+          />
+          <div class="input-group-append">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="
+                passwordConfirmationVisible = !passwordConfirmationVisible
+              "
+            >
+              {{ passwordConfirmationVisible ? "Hide" : "Show" }}
+            </button>
+          </div>
+        </div>
+
         <div
           *ngIf="
             (passwordInput.invalid || passwordConfirmationInput.invalid) &&
@@ -93,7 +124,7 @@
           </div>
           <div *ngIf="passwordInput.hasError('pattern')">
             Password must contain at least 8 characters, 1 uppercase letter, 1
-            lowercase letter, 1 number and 1 special character.
+            lowercase letter, 1 number, and 1 special character.
           </div>
           <div *ngIf="passwordInput.value !== passwordConfirmationInput.value">
             Password and confirmation do not match.
@@ -102,13 +133,13 @@
       </div>
       <small>
         A secure password must contain at least 8 characters, 1 uppercase
-        letter, 1 lowercase letter, 1 number and 1 special character.
+        letter, 1 lowercase letter, 1 number, and 1 special character.
       </small>
       <div id="button-container">
         <button
           type="submit"
           class="btn btn-primary"
-          [disabled]="passwordForm.invalid"
+          [disabled]="createUserForm.invalid"
         >
           Confirm
         </button>

@@ -3,7 +3,7 @@
   <form
     #contributionForm="ngForm"
     class="needs-validation"
-    (ngSubmit)="submitContribution()"
+    (ngSubmit)="submitContribution(amount || 0)"
   >
     <div class="mb-3">
       <label for="amount" class="form-label">Amount:</label>
@@ -17,6 +17,17 @@
       />
       <div class="invalid-feedback">Please enter an amount.</div>
     </div>
+
+    <!-- Mensagem de sucesso -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <!-- Mensagem de erro -->
+    <div *ngIf="newContributionErrorMessage" class="alert alert-danger">
+      {{ newContributionErrorMessage }}
+    </div>
+
     <div>
       <button
         type="submit"

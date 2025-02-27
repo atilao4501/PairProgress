@@ -8,61 +8,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { LoadingService } from '../../services/loading.service';
 import { ApiService } from '../../app/services/api.service';
+import { GoalService } from '../../app/services/goal.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-goals-accordion',
   standalone: true,
-  imports: [MatExpansionModule, CommonModule, MatButtonModule, MatIconModule],
+  imports: [
+    MatExpansionModule,
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+  ],
   templateUrl: './goals-accordion.component.html',
   styleUrls: ['./goals-accordion.component.css'],
 })
 export class GoalsAccordionComponent implements OnInit {
-  public goals: Goal[] = [];
-
   constructor(
     private dialog: MatDialog,
     private loadingService: LoadingService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    public goalService: GoalService
   ) {}
 
-  async ngOnInit() {
-    await this.getGoals();
-  }
-
-  async getGoals() {
-    try {
-      this.loadingService.show();
-      this.goals = await (
-        await this.apiService.get<Goal[]>('Goal/GetGoalsByUserCode')
-      ).data;
-      console.log(this.goals);
-    } catch (error) {
-      console.error('Error fetching goals:', error);
-    } finally {
-      this.loadingService.hide();
-    }
-  }
-
-  async deleteGoal(goalId: number) {
-    try {
-      this.loadingService.show();
-      await this.apiService.delete(`Goal/RemoveGoal/?GoalId=${goalId}`);
-      await this.getGoals();
-    } catch (error) {
-      console.error('Error deleting goal:', error);
-    } finally {
-      this.loadingService.hide();
-    }
-  }
-
-  createGoal(goal: Goal) {
-    console.log('createGoal');
-  }
-
-  openModal() {
-    this.dialog.open(CreateGoalModalComponent, {
-      width: '400px',
-    });
-    console.log('openModal');
-  }
+  async ngOnInit() {}
 }

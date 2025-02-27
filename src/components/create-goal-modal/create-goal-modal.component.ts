@@ -2,15 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NewGoal } from '../../interfaces/newGoal';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { LoadingService } from '../../services/loading.service';
 import { ApiService } from '../../app/services/api.service';
-import { LoadingComponent } from "../loading/loading.component";
+import { LoadingComponent } from '../loading/loading.component';
+import { GoalService } from '../../app/services/goal.service';
 
 @Component({
   selector: 'app-create-goal-modal',
   standalone: true,
-  imports: [MatDialogModule, ReactiveFormsModule, NgFor, LoadingComponent],
+  imports: [
+    MatDialogModule,
+    ReactiveFormsModule,
+    NgFor,
+    LoadingComponent,
+    CommonModule,
+  ],
   templateUrl: './create-goal-modal.component.html',
   styleUrls: ['./create-goal-modal.component.css'],
 })
@@ -21,7 +28,8 @@ export class CreateGoalModalComponent implements OnInit {
 
   constructor(
     private loadingService: LoadingService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    public goalService: GoalService
   ) {}
 
   ngOnInit(): void {
@@ -59,17 +67,7 @@ export class CreateGoalModalComponent implements OnInit {
       let formData = { ...this.formGroup.value };
 
       formData.date = new Date(formData.date).toISOString();
-
-      try {
-        this.loadingService.show();
-        let result = await this.apiService.post('Goal/CreateGoal', formData);
-        console.log(result.message);
-        this.loadingService.hide();
-        window.location.reload();
-      } catch (error: any) {
-        this.loadingService.hide();
-        console.error('error: ' + error.message);
-      }
+      this.goalService.createGoal(formData);
     }
   }
 }

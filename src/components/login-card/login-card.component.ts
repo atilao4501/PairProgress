@@ -34,7 +34,6 @@ export class LoginCardComponent {
       this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
-  // Função para login
   async login(username: string, password: string) {
     if (!username || !password) {
       this.errorMessage = 'Both username and password are required.';

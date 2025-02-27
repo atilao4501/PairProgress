@@ -19,3 +19,8 @@ form {
   padding: 16px;
   z-index: 30;
 }
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}

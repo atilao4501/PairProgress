@@ -1,6 +1,4 @@
-import { Contribution } from './contribution';
-
-export interface Goal {
+export interface EditGoalInput {
   id: number;
   name: string;
   description: string;
@@ -8,5 +6,4 @@ export interface Goal {
   currentAmount: number;
   date: Date;
   recommendedInvestmentPerMonth: number;
-  contributions: Contribution[];
 }

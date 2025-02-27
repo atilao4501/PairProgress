@@ -7,7 +7,7 @@
         class="form-control"
         id="email"
         name="email"
-        [(ngModel)]="email"
+        [(ngModel)]="user.email"
         required
       />
     </div>
@@ -18,11 +18,11 @@
         class="form-control"
         id="username"
         name="username"
-        [(ngModel)]="username"
+        [(ngModel)]="user.userName"
         required
       />
     </div>
-    <div *ngIf="hasPartner" class="form-group">
+    <div *ngIf="user.pairName" class="form-group">
       <label for="partner">Partner:</label>
       <div class="d-flex align-items-center">
         <input
@@ -30,7 +30,7 @@
           class="form-control"
           id="partner"
           name="partner"
-          [(ngModel)]="partnerName"
+          [(ngModel)]="user.pairName"
           readonly
           disabled
         />
@@ -44,7 +44,7 @@
         </button>
       </div>
     </div>
-    <div *ngIf="!hasPartner" class="form-group">
+    <div *ngIf="!user.pairName" class="form-group">
       <label for="newPartnerCode">New Partner Code:</label>
       <div class="d-flex align-items-center">
         <input

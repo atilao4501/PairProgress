@@ -8,9 +8,7 @@ export class ConfirmActionService {
   public title = '';
   public message = '';
 
-  public onConfirm?: () => any = () => {
-    console.log('Confirm not implemented');
-  };
+  public onConfirm?: () => any = () => {};
 
   public onCancel?: () => any = () => {
     console.log('Cancel not implemented');

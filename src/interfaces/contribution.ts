@@ -1,5 +1,5 @@
 export interface Contribution {
-  goalId: number;
+  id: number;
   amount: number;
   date: Date;
   contributorName: string;

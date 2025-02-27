@@ -1,25 +1,25 @@
 <div class="goal-detailed-card">
-  <form #goalForm="ngForm" (submit)="onSubmit()">
+  <form #goalForm="ngForm" (ngSubmit)="onSubmit(goalForm.value)">
     <div class="form-group">
       <label for="goalName">Name</label>
       <input
         type="text"
         class="form-control"
-        id="goalName"
-        name="goalName"
+        id="Name"
+        name="Name"
         placeholder="Enter goal name"
-        [(ngModel)]="goal.name"
+        [(ngModel)]="this.goalService.detailedGoal.name"
       />
     </div>
     <div class="form-group">
       <label for="goalDescription">Description</label>
       <textarea
         class="form-control"
-        id="goalDescription"
-        name="goalDescription"
+        id="Description"
+        name="Description"
         rows="3"
         placeholder="Enter goal description"
-        [(ngModel)]="goal.description"
+        [(ngModel)]="this.goalService.detailedGoal.description"
       ></textarea>
     </div>
     <div class="form-group">
@@ -30,7 +30,7 @@
         id="targetAmount"
         name="targetAmount"
         placeholder="Enter target amount"
-        [(ngModel)]="goal.targetAmount"
+        [(ngModel)]="this.goalService.detailedGoal.targetAmount"
       />
     </div>
     <div class="form-group">
@@ -41,7 +41,7 @@
         id="currentAmount"
         name="currentAmount"
         placeholder="Enter current amount"
-        [(ngModel)]="goal.currentAmount"
+        [(ngModel)]="this.goalService.detailedGoal.currentAmount"
       />
     </div>
     <div class="form-group">
@@ -52,7 +52,7 @@
         id="date"
         name="date"
         placeholder="Enter date"
-        [(ngModel)]="goal.date.toISOString().split('T')[0]"
+        [(ngModel)]="detailedGoalDateAsString"
         [min]="minDate"
       />
     </div>
@@ -66,7 +66,9 @@
         id="recommendedInvestmentPerMonth"
         name="recommendedInvestmentPerMonth"
         placeholder="Enter recommended investment per month"
-        [(ngModel)]="goal.recommendedInvestmentPerMonth"
+        [(ngModel)]="
+          this.goalService.detailedGoal.recommendedInvestmentPerMonth
+        "
       />
     </div>
     <div id="button-container">
