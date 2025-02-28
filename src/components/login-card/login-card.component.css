@@ -35,3 +35,10 @@ button {
   margin-top: 10px;
   gap: 5px;
 }
+
+#logoImage {
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

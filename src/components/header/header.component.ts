@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { User } from '../../interfaces/user/user';
 import { UserService } from '../../app/services/user.service';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +14,23 @@ import { UserService } from '../../app/services/user.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-  constructor(public userService: UserService) {}
+  constructor(
+    public userService: UserService,
+    private loadingService: LoadingService
+  ) {}
   async ngOnInit() {
-    await this.userService.getUserInfo();
+    try {
+      this.loadingService.show();
+      await this.userService.getUserInfo();
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    } finally {
+      this.loadingService.hide();
+    }
+  }
+
+  logout() {
+    localStorage.clear();
+    window.location.reload();
   }
 }

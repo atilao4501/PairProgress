@@ -4,6 +4,7 @@ import { DashboardPageComponent } from '../pages/dashboard/dashboard-page.compon
 import { GoalDetailedPageComponent } from '../pages/goal-detailed-page/goal-detailed-page.component';
 import { MyProfilePageComponent } from '../pages/my-profile-page/my-profile-page.component';
 import { CreateUserPageComponent } from '../pages/create-user/create-user-page.component';
+import { ResetPasswordPageComponent } from '../pages/reset-password/reset-password-page.component';
 
 export const routes: Routes = [
   { path: '', component: LoginPageComponent },
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'create-user',
     component: CreateUserPageComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordPageComponent,
   },
 
   { path: '**', redirectTo: 'home', pathMatch: 'full' },

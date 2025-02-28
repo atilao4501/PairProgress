@@ -35,6 +35,24 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <label for="userCode">Your User Code:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userCode"
+        name="userCode"
+        [(ngModel)]="this.userService.currentUser.userCode"
+        disabled="true"
+        #userCode="ngModel"
+      />
+      <div *ngIf="userCode.invalid && userCode.touched" class="text-danger">
+        <small *ngIf="userCode.errors?.['required']"
+          >User code is required.</small
+        >
+      </div>
+    </div>
+
     <div *ngIf="this.userService.currentUser.pairName" class="form-group">
       <label for="partner">Partner:</label>
       <div class="d-flex align-items-center">
