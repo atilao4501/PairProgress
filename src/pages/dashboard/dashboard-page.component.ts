@@ -32,7 +32,6 @@ export class DashboardPageComponent implements OnInit {
     this.loadingService.show();
     try {
       await this.goalService.getGoals();
-      await this.userService.getUserInfo();
     } catch (error) {
       this.loadingService.hide();
     }

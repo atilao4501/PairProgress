@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <form #form="ngForm" (ngSubmit)="onSubmit()">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <div class="form-group">
       <label for="email">Email:</label>
       <input
@@ -7,10 +7,16 @@
         class="form-control"
         id="email"
         name="email"
-        [(ngModel)]="user.email"
+        [(ngModel)]="this.userService.currentUser.email"
         required
+        #email="ngModel"
       />
+      <div *ngIf="email.invalid && email.touched" class="text-danger">
+        <small *ngIf="email.errors?.['required']">Email is required.</small>
+        <small *ngIf="email.errors?.['email']">Invalid email format.</small>
+      </div>
     </div>
+
     <div class="form-group">
       <label for="username">Username:</label>
       <input
@@ -18,11 +24,18 @@
         class="form-control"
         id="username"
         name="username"
-        [(ngModel)]="user.userName"
+        [(ngModel)]="this.userService.currentUser.userName"
         required
+        #username="ngModel"
       />
+      <div *ngIf="username.invalid && username.touched" class="text-danger">
+        <small *ngIf="username.errors?.['required']"
+          >Username is required.</small
+        >
+      </div>
     </div>
-    <div *ngIf="user.pairName" class="form-group">
+
+    <div *ngIf="this.userService.currentUser.pairName" class="form-group">
       <label for="partner">Partner:</label>
       <div class="d-flex align-items-center">
         <input
@@ -30,7 +43,7 @@
           class="form-control"
           id="partner"
           name="partner"
-          [(ngModel)]="user.pairName"
+          [(ngModel)]="this.userService.currentUser.pairName"
           readonly
           disabled
         />
@@ -38,35 +51,48 @@
           type="button"
           class="btn btn-danger"
           id="button-remove"
-          (click)="removePartner()"
+          (click)="checkRemovePartner()"
         >
           x
         </button>
       </div>
     </div>
-    <div *ngIf="!user.pairName" class="form-group">
+
+    <div *ngIf="!this.userService.currentUser.pairName" class="form-group">
       <label for="newPartnerCode">New Partner Code:</label>
       <div class="d-flex align-items-center">
         <input
           type="text"
           class="form-control"
-          id="newPartnerCode"
-          name="newPartnerCode"
-          [(ngModel)]="newPartnerCode"
-          required
+          id="PartnerCode"
+          name="PartnerCode"
+          #PartnerCode
+          (input)="(0)"
+          aria-describedby="partnerCodeError"
         />
         <button
           type="button"
           class="btn btn-dark ml-2"
           id="button-add"
-          (click)="addPartner()"
+          (click)="checkAddPartner(PartnerCode.value)"
+          [disabled]="!PartnerCode?.value?.length"
         >
           Add
         </button>
       </div>
+      <div
+        *ngIf="addPartnerErrorMessage"
+        id="partnerCodeError"
+        class="text-danger mt-2"
+      >
+        <small>{{ addPartnerErrorMessage }}</small>
+      </div>
     </div>
+
     <div class="form-group" id="accept-button-container">
-      <button type="submit" class="btn btn-dark">Save Changes</button>
+      <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
+        Save Changes
+      </button>
     </div>
   </form>
 </div>

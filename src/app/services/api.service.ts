@@ -6,6 +6,7 @@ import { ApiResponse } from '../../interfaces/apiResponse';
 import { firstValueFrom } from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,25 +17,43 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private loadingService: LoadingService,
-    @Inject(PLATFORM_ID) private platformId: any // Injeção do PLATFORM_ID para verificar SSR
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {}
+
+  private async handleRequest<T>(
+    promise: Promise<ApiResponse<T>>,
+    isLoginRequest: boolean = false
+  ): Promise<ApiResponse<T>> {
+    try {
+      return await promise;
+    } catch (error: any) {
+      if (error.status === 401 && !isLoginRequest) {
+        this.router.navigate(['/login']);
+      }
+      throw error;
+    }
+  }
 
   async login(credentials: LoginRequest): Promise<ApiResponse<LoginResponse>> {
     this.loadingService.show();
-
-    const response = await firstValueFrom(
-      this.http.post<ApiResponse<string>>(
-        `${this.apiUrl}/auth/login`,
-        credentials
-      )
-    );
-
-    this.loadingService.hide();
-    return {
-      success: response.success,
-      message: response.message,
-      data: { token: response.data },
-    };
+    try {
+      const response = await this.handleRequest(
+        firstValueFrom(
+          this.http.post<ApiResponse<string>>(
+            `${this.apiUrl}/auth/login`,
+            credentials
+          )
+        )
+      );
+      return {
+        success: response.success,
+        message: response.message,
+        data: { token: response.data },
+      };
+    } finally {
+      this.loadingService.hide();
+    }
   }
 
   private getAuthHeaders(): { headers: HttpHeaders } {
@@ -52,44 +71,48 @@ export class ApiService {
   }
 
   async get<T>(endpoint: string): Promise<ApiResponse<T>> {
-    const response = await firstValueFrom(
-      this.http.get<ApiResponse<T>>(
-        `${this.apiUrl}/${endpoint}`,
-        this.getAuthHeaders()
+    return await this.handleRequest(
+      firstValueFrom(
+        this.http.get<ApiResponse<T>>(
+          `${this.apiUrl}/${endpoint}`,
+          this.getAuthHeaders()
+        )
       )
     );
-    return response;
   }
 
   async post<T>(endpoint: string, body: any): Promise<ApiResponse<T>> {
-    const response = await firstValueFrom(
-      this.http.post<ApiResponse<T>>(
-        `${this.apiUrl}/${endpoint}`,
-        body,
-        this.getAuthHeaders()
+    return await this.handleRequest(
+      firstValueFrom(
+        this.http.post<ApiResponse<T>>(
+          `${this.apiUrl}/${endpoint}`,
+          body,
+          this.getAuthHeaders()
+        )
       )
     );
-    return response;
   }
 
   async put<T>(endpoint: string, body: any): Promise<ApiResponse<T>> {
-    const response = await firstValueFrom(
-      this.http.put<ApiResponse<T>>(
-        `${this.apiUrl}/${endpoint}`,
-        body,
-        this.getAuthHeaders()
+    return await this.handleRequest(
+      firstValueFrom(
+        this.http.put<ApiResponse<T>>(
+          `${this.apiUrl}/${endpoint}`,
+          body,
+          this.getAuthHeaders()
+        )
       )
     );
-    return response;
   }
 
   async delete<T>(endpoint: string): Promise<ApiResponse<T>> {
-    const response = await firstValueFrom(
-      this.http.delete<ApiResponse<T>>(
-        `${this.apiUrl}/${endpoint}`,
-        this.getAuthHeaders()
+    return await this.handleRequest(
+      firstValueFrom(
+        this.http.delete<ApiResponse<T>>(
+          `${this.apiUrl}/${endpoint}`,
+          this.getAuthHeaders()
+        )
       )
     );
-    return response;
   }
 }

@@ -2,12 +2,22 @@ import { Injectable } from '@angular/core';
 import { CreateUserInput } from '../../interfaces/user/createUserInput';
 import { ApiService } from './api.service';
 import { User } from '../../interfaces/user/user';
+import { UpdateUserInput } from '../../interfaces/user/updateUserInput';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   constructor(private apiService: ApiService) {}
+
+  public currentUser: User = {
+    userCode: '',
+    userName: '',
+    email: '',
+    pairName: null,
+    pairEmail: null,
+    pairCode: null,
+  };
 
   public async createUser(CreateUserInput: CreateUserInput) {
     try {
@@ -32,7 +42,7 @@ export class UserService {
       const user = (await this.apiService.get<User>('User/GetUserByToken'))
         .data;
 
-      localStorage.setItem('user', JSON.stringify(user));
+      this.currentUser = user;
 
       return user;
     } catch (error: any) {
@@ -40,7 +50,31 @@ export class UserService {
     }
   }
 
-  public async updateUser() {}
+  public async getUserNameByUserCode(userCode: string) {
+    try {
+      return await this.apiService.get<string>(
+        `User/GetUserNameByUserCode/${userCode}`
+      );
+    } catch (error: any) {
+      throw error.error;
+    }
+  }
+
+  public async updateUser(updateUserInput: UpdateUserInput) {
+    try {
+      try {
+        await this.checkIfEmailExists(updateUserInput.email);
+        await this.checkIfUsernameExists(updateUserInput.username);
+      } catch (error) {
+        throw error;
+      }
+
+      await this.apiService.put('User/EditUserByToken', updateUserInput);
+      await this.getUserInfo();
+    } catch (error: any) {
+      throw error.error;
+    }
+  }
 
   public async checkIfEmailExists(email: string) {
     try {

@@ -9,7 +9,7 @@
       aria-haspopup="true"
       aria-expanded="false"
     >
-      {{ username }}
+      {{ this.userService.currentUser?.userName }}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="/profile">My Profile</a>
