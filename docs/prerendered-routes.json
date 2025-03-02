@@ -1,0 +1,10 @@
+{
+  "routes": [
+    "/",
+    "/create-user",
+    "/home",
+    "/login",
+    "/profile",
+    "/reset-password"
+  ]
+}
