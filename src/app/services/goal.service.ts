@@ -8,6 +8,7 @@ import { CreateGoalModalComponent } from '../../components/create-goal-modal/cre
 import moment from 'moment';
 import { LoadingService } from '../../services/loading.service';
 import { EditGoalInput } from '../../interfaces/editGoalInput';
+import { MascotService } from './mascot.service';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,8 @@ export class GoalService {
   constructor(
     private apiService: ApiService,
     private dialog: MatDialog,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private mascotService: MascotService
   ) {}
 
   async getGoals() {
@@ -69,6 +71,7 @@ export class GoalService {
       this.loadingService.show();
       await this.apiService.post('Goal/CreateGoal', goal);
       await this.getGoals();
+      await this.mascotService.getBuddyImage();
       this.dialog.closeAll();
       this.loadingService.hide();
     } catch (error: any) {
