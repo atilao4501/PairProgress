@@ -1,4 +1,4 @@
 export const environment = {
-  production: 'http://pairprogress.runasp.net/api',
+  production: true,
   apiUrl: 'http://localhost:8080/api',
 };
