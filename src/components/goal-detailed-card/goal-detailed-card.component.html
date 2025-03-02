@@ -1,0 +1,79 @@
+<div class="goal-detailed-card">
+  <form #goalForm="ngForm" (ngSubmit)="onSubmit(goalForm.value)">
+    <div class="form-group">
+      <label for="goalName">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Name"
+        name="Name"
+        placeholder="Enter goal name"
+        [(ngModel)]="this.goalService.detailedGoal.name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="goalDescription">Description</label>
+      <textarea
+        class="form-control"
+        id="Description"
+        name="Description"
+        rows="3"
+        placeholder="Enter goal description"
+        [(ngModel)]="this.goalService.detailedGoal.description"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="targetAmount">Target Amount</label>
+      <input
+        type="number"
+        class="form-control"
+        id="targetAmount"
+        name="targetAmount"
+        placeholder="Enter target amount"
+        [(ngModel)]="this.goalService.detailedGoal.targetAmount"
+      />
+    </div>
+    <div class="form-group">
+      <label for="currentAmount">Current Amount</label>
+      <input
+        type="number"
+        class="form-control"
+        id="currentAmount"
+        name="currentAmount"
+        placeholder="Enter current amount"
+        [(ngModel)]="this.goalService.detailedGoal.currentAmount"
+      />
+    </div>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="date"
+        name="date"
+        placeholder="Enter date"
+        [(ngModel)]="detailedGoalDateAsString"
+        [min]="minDate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="recommendedInvestmentPerMonth"
+        >Recommended Investment Per Month</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="recommendedInvestmentPerMonth"
+        name="recommendedInvestmentPerMonth"
+        placeholder="Enter recommended investment per month"
+        [(ngModel)]="
+          this.goalService.detailedGoal.recommendedInvestmentPerMonth
+        "
+      />
+    </div>
+    <div id="button-container">
+      <button type="submit" class="btn btn-dark">Save</button>
+    </div>
+  </form>
+</div>
+<app-confirm-action-dialog> </app-confirm-action-dialog>

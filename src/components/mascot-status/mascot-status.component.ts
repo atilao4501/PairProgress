@@ -6,6 +6,12 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit, NgZone } from '@angular/core';
+import { ApiService } from '../../app/services/api.service';
+import { LoadingService } from '../../services/loading.service';
+import { ApiResponse } from '../../interfaces/apiResponse';
+import { BuddyMoodEnum } from '../../interfaces/buddyMoodEnum';
+import { MascotStatusProperties } from '../../interfaces/dashboard/mascotStatusProperties';
+import { MascotService } from '../../app/services/mascot.service';
 
 @Component({
   selector: 'app-mascot-status',
@@ -22,36 +28,22 @@ import { Component, OnInit, NgZone } from '@angular/core';
   ],
 })
 export class MascotStatusComponent implements OnInit {
-  public imageName = 'angryMascot';
-  public firstImageState = 'visible';
-  public secondImageState = 'hidden';
-  public firstImageId = 'noOpacity';
-  public secondImageId = 'normalOpacity';
-  public number = 0;
+  constructor(
+    private ngZone: NgZone,
+    private apiService: ApiService,
+    private loadingService: LoadingService,
+    public mascotService: MascotService
+  ) {}
 
-  constructor(private ngZone: NgZone) {}
+  async ngOnInit() {
+    this.mascotService.getBuddyImage();
 
-  ngOnInit() {
     this.ngZone.runOutsideAngular(() => {
       setInterval(() => {
         this.ngZone.run(() => {
-          this.changeOpacity();
+          this.mascotService.changeMascotOpacity();
         });
-      }, 2000);
+      }, 1000);
     });
-  }
-
-  toggleImageStates() {
-    this.firstImageState =
-      this.firstImageState === 'visible' ? 'hidden' : 'visible';
-    this.secondImageState =
-      this.secondImageState === 'visible' ? 'hidden' : 'visible';
-  }
-
-  changeOpacity() {
-    this.firstImageId =
-      this.firstImageId === 'normalOpacity' ? 'noOpacity' : 'normalOpacity';
-    this.secondImageId =
-      this.secondImageId === 'normalOpacity' ? 'noOpacity' : 'normalOpacity';
   }
 }

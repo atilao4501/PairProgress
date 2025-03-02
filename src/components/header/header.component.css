@@ -1,39 +1,41 @@
-.toolbar {
+nav {
+  /* background-color: #c4dd94; */
+  background-color: #48552a;
+  z-index: 1000;
+  padding: 15px;
   display: flex;
-  justify-content: space-between; /* Distribui os elementos */
-  align-items: center; /* Centraliza verticalmente */
-  position: relative; /* Permite posicionamento absoluto no centro */
-  height: fit-content; /* Altura padrão */
-  padding: 3vh; /* Espaçamento horizontal */
-  width: 100%;
+  border-radius: 10px; /* Adiciona bordas redondas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona sombra */
+  width: 98vw;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.dropdown {
+  margin-left: auto;
+  display: flex;
+}
+.dropdown-menu {
+  left: auto;
+  right: 0; /* Faz o menu alinhar à borda direita do dropdown */
 }
 
-.toolbar-left,
-.toolbar-right {
-  flex: 0 0 auto; /* Não deixam os elementos crescerem */
-  z-index: 1; /* Garante que os elementos laterais não se sobreponham ao centro */
-  font-size: 1.5vw;
-  font-weight: bold;
-  font-style: oblique;
+button {
+  background-color: #48552a;
 }
 
-.toolbar-center {
-  position: absolute; /* Fixa o elemento no centro da barra */
-  left: 50%; /* Move para o centro horizontal */
-  transform: translateX(-50%); /* Centraliza corretamente */
-  z-index: 0; /* Garante que está abaixo dos elementos laterais */
-  margin: 0 0 0 0;
-  height: 100%;
+button:hover {
+  background-color: #1c2900;
 }
-#centralIcon {
-  height: 100%;
-  width: 100%;
-}
+
 @media (max-width: 768px) {
-  .toolbar-left,
-  .toolbar-right {
-    flex: 0 0 auto; /* Não deixam os elementos crescerem */
-    z-index: 1; /* Garante que os elementos laterais não se sobreponham ao centro */
-    font-size: 3vw;
+  nav {
+    width: 95vw;
   }
+}
+
+#logoImage {
+  width: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

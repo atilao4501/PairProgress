@@ -1,0 +1,37 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #d6e4bb;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+th {
+  background-color: #9fae7f;
+  font-weight: bold;
+}
+
+.contributed {
+  background-color: #c6e48b; /* Verde claro para contribuição */
+}
+
+.notContributed {
+  background-color: #f0a0a0; /* Vermelho claro para ausência de contribuição */
+}
+
+@media (max-width: 768px) {
+  table {
+    font-size: 8px;
+  }
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+}

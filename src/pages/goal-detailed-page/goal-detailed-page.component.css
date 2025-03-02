@@ -1,0 +1,43 @@
+#page {
+  min-height: 100vh;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #7f9853;
+  gap: 20px;
+}
+app-goal-detailed-card {
+  width: 90vw;
+}
+#contribution-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 90%;
+  margin-bottom: 20px;
+  height: fit-content;
+}
+app-history-card {
+  flex: 1;
+  max-width: 70%;
+}
+app-new-contribution-card {
+  flex: 1;
+  max-width: 30%;
+}
+
+@media (max-width: 768px) {
+  #contribution-container {
+    flex-direction: column;
+  }
+  app-history-card {
+    flex: 1;
+    max-width: 100%;
+  }
+  app-new-contribution-card {
+    flex: 1;
+    max-width: 100%;
+  }
+}

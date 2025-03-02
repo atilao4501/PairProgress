@@ -1,0 +1,26 @@
+form,
+label,
+input,
+button {
+  display: block;
+  margin: 10px 0;
+}
+
+label {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+h1 {
+  font-style: italic;
+}
+
+form {
+  padding: 16px;
+  z-index: 30;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,36 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { Goal } from '../../interfaces/goal';
+import { CreateGoalModalComponent } from '../create-goal-modal/create-goal-modal.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { LoadingService } from '../../services/loading.service';
+import { ApiService } from '../../app/services/api.service';
+import { GoalService } from '../../app/services/goal.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-goals-accordion',
   standalone: true,
-  imports: [MatExpansionModule, CommonModule, MatButtonModule, MatIconModule],
+  imports: [
+    MatExpansionModule,
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+  ],
   templateUrl: './goals-accordion.component.html',
   styleUrls: ['./goals-accordion.component.css'],
 })
-export class GoalsAccordionComponent {
-  public goals: Goal[] = [
-    {
-      id: 1,
-      name: 'Aprender Angular',
-      description:
-        'Aprender a usar o Angular para criar aplica es web modernas.',
-    },
-    {
-      id: 2,
-      name: 'Usar Angular Material',
-      description:
-        'Aprender a usar o Angular Material para criar aplica es web com design material.',
-    },
-    {
-      id: 3,
-      name: 'Criar um projeto incr vel',
-      description:
-        'Criar um projeto incr vel que demonstre meus conhecimentos em Angular.',
-    },
-  ];
+export class GoalsAccordionComponent implements OnInit {
+  constructor(
+    private dialog: MatDialog,
+    private loadingService: LoadingService,
+    private apiService: ApiService,
+    public goalService: GoalService
+  ) {}
+
+  async ngOnInit() {}
 }

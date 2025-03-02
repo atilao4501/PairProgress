@@ -1,0 +1,35 @@
+<table>
+  <!-- Header with months -->
+  <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let month of monthsKeys">
+        {{ month }}
+      </th>
+    </tr>
+  </thead>
+
+  <!-- Table body with data -->
+  <tbody>
+    <!-- One row for each goal -->
+    <tr *ngFor="let goal of goalService.goals">
+      <!-- Goal ID in the first cell -->
+      <td>{{ goal.name }}</td>
+      <!-- One cell for each month -->
+      <td *ngFor="let month of monthsKeys">
+        <div
+          *ngIf="getContributionForMonth(goal.contributions, month)"
+          class="contributed"
+        >
+          ✔
+        </div>
+        <div
+          *ngIf="!getContributionForMonth(goal.contributions, month)"
+          class="notContributed"
+        >
+          ✘
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

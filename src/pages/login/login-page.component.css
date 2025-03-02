@@ -1,0 +1,18 @@
+#page {
+  display: flex;
+  background-color: #48552a;
+  width: 100%;
+  min-height: 100%;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+app-login-card {
+  width: 500px;
+}
+
+@media (max-width: 600px) {
+  app-login-card {
+    width: 300px;
+  }
+}

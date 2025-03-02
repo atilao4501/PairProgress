@@ -1,0 +1,54 @@
+.container {
+  width: 90vw;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #cadaa9;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90vw;
+  }
+}
+
+input {
+  background-color: #a2ba74;
+  border: none;
+}
+
+input:disabled {
+  background-color: #8fa863;
+}
+
+#accept-button-container {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+#button-add {
+  display: flex;
+  margin-left: 10px;
+  width: 50px;
+  height: 40px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+#button-remove {
+  display: flex;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
