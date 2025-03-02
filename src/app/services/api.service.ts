@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ApiService {
-  apiUrl = environment.apiUrl;
+  apiUrl = environment.production;
 
   constructor(
     private http: HttpClient,
