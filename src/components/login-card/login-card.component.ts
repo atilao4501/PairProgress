@@ -8,12 +8,12 @@ import { LoadingService } from '../../services/loading.service';
 import { LoadingComponent } from '../loading/loading.component';
 import { CommonModule } from '@angular/common';
 import { error } from 'console';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-card',
   standalone: true,
-  imports: [FormsModule, LoadingComponent, CommonModule],
+  imports: [FormsModule, LoadingComponent, CommonModule, RouterModule],
   templateUrl: './login-card.component.html',
   styleUrl: './login-card.component.css',
 })
