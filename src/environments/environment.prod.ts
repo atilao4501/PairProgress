@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://pairprogress.runasp.net/api',
+  apiUrl: 'https://pairprogress.runasp.net/api',
 };
