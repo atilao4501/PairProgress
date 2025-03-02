@@ -90,6 +90,7 @@ export class GoalService {
       this.createGoalModalErrorMessage =
         'An error occurred while creating the goal';
     } finally {
+      this.loadingService.hide();
     }
   }
 
